@@ -1,0 +1,21 @@
+{
+  "name": "icms-bi",
+  "version": "1.0.0",
+  "description": "Application to fetch and save ICMS data",
+  "main": "src/getData.js",
+  "scripts": {
+    "start": "node src/getData.js",
+    "visualize": "nodemon src/visualizeData.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.4",
+    "chartjs-node-canvas": "^4.0.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9"
+  },
+  "author": "Your Name",
+  "license": "ISC"
+}
