@@ -3,25 +3,17 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const cors = require('cors');
 const path = require('path');
-const { exec } = require('child_process'); // Importa módulo para executar comandos no sistema
+const { exec } = require('child_process');
 
 const app = express();
-app.use(cors());  // Habilita requisições do frontend
+app.use(cors());
 
 const port = 3000;
 
-// Função para rodar getData.js antes de processar os dados
+// Atualiza os dados antes de processar a requisição
 function updateData(callback) {
-    console.log("🔄 Atualizando dados do Siconfi...");
-    exec('node src/getData.js', (error, stdout, stderr) => {
-        if (error) {
-            console.error(`❌ Erro ao atualizar dados: ${error.message}`);
-            return callback(error);
-        }
-        if (stderr) {
-            console.warn(`⚠️ Aviso: ${stderr}`);
-        }
-        console.log(`✅ Dados atualizados com sucesso:\n${stdout}`);
+    exec('node src/getData.js', (error) => {
+        if (error) return callback(error);
         callback(null);
     });
 }
@@ -46,13 +38,8 @@ app.get('/data', async (req, res) => {
         try {
             const boletimData = await loadCSV(path.join(__dirname, '../boletim_data.csv'));
             const siconfiData = await loadCSV(path.join(__dirname, '../siconfi_data.csv'));
-
-            console.log(`📊 Boletim Data: ${boletimData.length} registros`);
-            console.log(`📊 Siconfi Data: ${siconfiData.length} registros`);
-
             res.json({ boletim: boletimData, siconfi: siconfiData });
         } catch (error) {
-            console.error("❌ Erro ao carregar os dados:", error);
             res.status(500).json({ error: "Erro ao carregar os dados" });
         }
     });
