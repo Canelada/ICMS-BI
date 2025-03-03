@@ -1,6 +1,6 @@
 async function fetchData() {
     try {
-        const response = await fetch('http://localhost:3000/data');
+        const response = await fetch('https://icms-bi.onrender.com/data');
         const data = await response.json();
 
         if (!data.boletim || !data.siconfi) {
