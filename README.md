@@ -1,17 +1,3 @@
-📂 icms-bi
-│── 📂 src
-│   │── getData.js         # 🔄 Coleta os dados da API do Siconfi e salva em CSV
-│   │── visualizeData.js   # 📡 Servidor Express.js que processa e serve os dados para o frontend
-│── 📂 public
-│   │── index.html         # 🌍 Página principal do dashboard
-│   │── script.js          # 📜 Consome API e renderiza o gráfico com Chart.js
-│   │── style.css          # 🎨 Estilos visuais do dashboard
-│── 📂 data
-│   │── boletim_data.csv   # 📄 Dados do boletim de arrecadação (fonte 1)
-│   │── siconfi_data.csv   # 📄 Dados extraídos da API do Siconfi (fonte 2)
-│── package.json           # 📦 Dependências do Node.js
-│── README.md              # 📖 Documentação do projeto
-
 🔁 Fluxo de Funcionamento
 
 1️⃣ O usuário acessa a página
