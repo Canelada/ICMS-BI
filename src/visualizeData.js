@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 app.use(cors());
 
-const port = process.env.PORT || 3000; // 🔥 Porta correta para Azure
+const port = process.env.PORT || 8080; // 🔥 Azure exige process.env.PORT
 
 // Função para carregar CSV
 function loadCSV(filePath) {
@@ -47,5 +47,5 @@ app.get('/', (req, res) => {
 
 // Iniciar o servidor
 app.listen(port, () => {
-  console.log(`📡 Servidor rodando na porta ${port}`);
+    console.log(`📡 Servidor rodando na porta ${port}`);
 });
